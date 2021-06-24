@@ -1,0 +1,26 @@
+CREATE TABLE stats(id INT NOT NULL AUTO_INCREMENT, country VARCHAR(255), region VARCHAR(255), location VARCHAR(255), date DATE,  confirmed INT, deaths INT, recovered INT, active INT, PRIMARY KEY (ID));
+
+CREATE table deltas (id INT NOT NULL AUTO_INCREMENT, country VARCHAR(255), region VARCHAR(255), date DATE, new_cases INT, percent_delta FLOAT, PRIMARY KEY (ID));
+
+CREATE table users (id INT NOT NULL AUTO_INCREMENT, username VARCHAR(255), country VARCHAR(255), region VARCHAR(255), timezone VARCHAR(25), phone_number VARCHAR(15), email VARCHAR(255), preferences JSON, PRIMARY KEY (ID), CHECK (JSON_VALID(preferences)));
+
+CREATE table country_regions(id INT NOT NULL AUTO_INCREMENT, country VARCHAR(255), region VARCHAR(255),PRIMARY KEY (ID))
+
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Alberta');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','British Columbia');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Manitoba');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Nova Scotia');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Ontario');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Quebec');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Saskatchewan');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Nunavut');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Prince Edward Island');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Yukon');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','New Brunswick');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Newfoundland and Labrador');
+INSERT INTO country_regions (country, region) VALUES( 'Canada','Northwest Territories'));
+
+
+CREATE USER 'some_user'@'localhost' IDENTIFIED BY 'apassword';
+
+GRANT ALL ON mypandemic.* TO 'some_user'@'localhost';

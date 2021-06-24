@@ -1,0 +1,30 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+python-dateutil = "*"
+matplotlib = "*"
+mysql-connector-python = "*"
+fastapi = "*"
+uvicorn = "*"
+google-cloud-bigquery = "*"
+jinja2 = "*"
+python-multipart = "*"
+aiofiles = "*"
+apscheduler = "*"
+twilio = "*"
+sqlalchemy = "*"
+fastapi-sqlalchemy = "*"
+pydantic = "*"
+alembic = "*"
+bcrypt = "*"
+pyjwt = "*"
+
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

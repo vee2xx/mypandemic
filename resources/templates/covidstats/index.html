@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container">
+<div class="row">
+    <div class="col-sm">
+        <h4 class="text-center">{{ today }}</h4>
+    </div>
+</div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col">
+            <table class="table table-responsive-sm table-striped table-bordered w-auto">
+                <thead> 
+                    <td scope="col">Province</td>
+                    <td scope="col">New cases</td>
+                    <td scope="col">Total cases</td>
+                </thead>
+                <tbody>
+                    {% for stat in currstats %}
+                    <tr>
+                        <td>{{ stat['region'] }}</td>
+                        <td>{{ stat['new_cases'] }}</td>
+                        <td>{{ stat['count'] }}</td>
+                    </tr>          
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+
+            <div class="chart-container" style="position: relative; height:20rem; width:50rem">
+                <canvas id="NewCases" style="margin-bottom:50px;"></canvas>
+                <canvas id="PercentDeltas" style="margin-bottom:50px;"></canvas>
+                <canvas id="Counts" style="margin-bottom:50px;"></canvas>
+            </div>
+            <script>
+                var dynamicColors = function() {
+                    var r = Math.floor(Math.random() * 255);
+                    var g = Math.floor(Math.random() * 255);
+                    var b = Math.floor(Math.random() * 255);
+                    return "rgb(" + r + "," + g + "," + b + ")";
+                }
+                var ctxNewCases = document.getElementById('NewCases').getContext('2d');
+                var ctxPercentDeltas = document.getElementById('PercentDeltas').getContext('2d');
+                var ctxCounts = document.getElementById('Counts').getContext('2d');
+                var chartNewCases = new Chart(ctxNewCases, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: [{% for item in newcases[0]['new_cases'] %} 
+                            "{{item['date']}}", 
+                        {% endfor %}
+                        ],
+                        datasets: [{% for regionNewCases in newcases %}
+                            {
+                                label: '{{regionNewCases['region']}}',
+                                borderColor: dynamicColors(),
+                                backgroundColor: 'transparent',
+                                data : [{% for newCasesForDate in regionNewCases['new_cases'] %}
+                                   {
+                                       x: new Date('{{newCasesForDate['date']}}'),
+                                       y: {{newCasesForDate['new_cases']}}
+                                   },
+                                {% endfor %}]
+                            },
+                            {% endfor %}
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Daily New Cases',
+                            position: 'bottom',
+                            fontStyle: 'bold',
+                            fontSize: 18
+                        },
+                        legend: {
+                            display: true,
+                            position: 'left',
+                            align: 'start',
+                            labels: {
+                                boxWidth: 5,
+                                boxHeight: 5,
+                                padding: 4,
+                                usePointStyle : true
+                            },
+                        },
+                        scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                            },
+                            ticks: {
+                                    beginAtZero: true,
+                                    stepSize: 1000
+                            }
+                        }],
+                        xAxes: [{
+                            type: 'time',
+                            autoSkip: false,
+                            time: {
+                                unit: 'day',
+                                unitStepSize: 3
+                            },
+                            scaleLabel: {
+                            display: true
+                            },
+                        }]
+                        }
+                    }
+                });
+                var chartPercentDeltas = new Chart(ctxPercentDeltas, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: [{% for item in percentdeltas[0]['percent_deltas'] %} 
+                            "{{item['date']}}", 
+                        {% endfor %}
+                        ],
+                        datasets: [{% for regionPercentDelta in percentdeltas %}
+                            {
+                                label: '{{regionPercentDelta['region']}}',
+                                borderColor: dynamicColors(),
+                                backgroundColor: 'transparent',
+                                data : [{% for percentDeltasForDate in regionPercentDelta['percent_deltas'] %}
+                                   {
+                                       x: new Date('{{percentDeltasForDate['date']}}'),
+                                       y: {{percentDeltasForDate['percent_delta']}}
+                                   },
+                                {% endfor %}]
+                            },
+                            {% endfor %}
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Percent Increase from Previous Day',
+                            position: 'bottom',
+                            fontStyle: 'bold',
+                            fontSize: 18
+                        },
+                        legend: {
+                            display: true,
+                            position: 'left',
+                            align: 'start',
+                            labels: {
+                                boxWidth: 5,
+                                boxHeight: 5,
+                                padding: 4,
+                                usePointStyle : true
+                            },
+                        },
+                        scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                            },
+                            ticks: {
+                                    beginAtZero: true,
+                                    stepSize: 1
+                            }
+                        }],
+                        xAxes: [{
+                            type: 'time',
+                            autoSkip: false,
+                            time: {
+                                unit: 'day',
+                                unitStepSize: 3
+                            },
+                            scaleLabel: {
+                            display: true
+                            },
+                        }]
+                        }
+                    }
+                });
+                var chartCounts = new Chart(ctxCounts, {
+                    // The type of chart we want to create
+                    type: 'line',
+
+                    // The data for our dataset
+                    data: {
+                        labels: [{% for item in counts[0]['counts'] %} 
+                            "{{item['date']}}", 
+                        {% endfor %}
+                        ],
+                        datasets: [{% for regionCounts in counts %}
+                            {
+                                label: '{{regionCounts['region']}}',
+                                borderColor: dynamicColors(),
+                                backgroundColor: 'transparent',
+                                data : [{% for countsForDate in regionCounts['counts'] %}
+                                   {
+                                       x: new Date('{{countsForDate['date']}}'),
+                                       y: {{countsForDate['count']}}
+                                   },
+                                {% endfor %}]
+                            },
+                            {% endfor %}
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: 'Total Cases',
+                            position: 'bottom',
+                            fontStyle: 'bold',
+                            fontSize: 18
+                        },
+                        legend: {
+                            display: true,
+                            position: 'left',
+                            align: 'start',
+                            labels: {
+                                boxWidth: 5,
+                                boxHeight: 5,
+                                padding: 4,
+                                usePointStyle : true
+                            },
+                        },
+                        scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                display: true,
+                            },
+                            ticks: {
+                                    beginAtZero: true,
+                                    stepSize: 20000
+                            }
+                        }],
+                        xAxes: [{
+                            type: 'time',
+                            autoSkip: false,
+                            time: {
+                                unit: 'day',
+                                unitStepSize: 3
+                            },
+                            scaleLabel: {
+                            display: true
+                            },
+                        }]
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+</div>
+{% endblock %}

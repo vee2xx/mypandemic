@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "nomadic-groove-282000",
+  "private_key_id": "1bc009d2681fc6d38d98f3cb6a6b41c74949276e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCwam4n+HLDGULt\nC8VKhEipK++WCHcPLBYIX+CFpaU0tSX89NFmazoZI10JcxtnoKC6YNfe/0A32Mf0\nvS3+UUcnGpnsKi9KhFj2ZOytUBdJaG8NxR69qGsEpeqV3YwjJDmK96NfXFaLAMk3\nuIbNHKkLyMOFIsd6DTP8401n9WOpvMSB8F/xhZWkc25Y7pCQ5y03LSKGJ67Qgh3a\nGRh2ByD/HOXF0KTA/NlaYnbog0JJaS510uWm0yZoAAL+Z1HjQNXzSyyWtqzJqAS9\nusf4Qqrn10utjNLAn09GsKCAt4CnRcKBnSMY7H/yvyubB9TP+yGxMsEwF5KbjXfa\n2yMpNSrxAgMBAAECggEAMYWe6I+Av62usNY2CsX5k6umtMopidPJV456e2nVZ2dW\ng5zBz2tYQsg/jLCIR926YLdgwdOLVmH/N3+HkrWEMMDx5m6tGdDvHDOWkMxDzTKI\nwifMilblu8dLg8hOV2sK0CzV6qYEET8mPQMKrDdYaNtxr0TlFCjyqBGyn/Uthe7k\n6e2XwKiANN9RTsz9UzbpwvFzfi9f+Peduv89WCRx4xf64DA+kBFI84VW6aTP5rla\nryQOTVDVOGb4gsNbISBEz0UKsi1Z6mWkpjESS/5FWx1i6Usc1DMWp7GVSwMAIKVj\nql1MJkDP1qZJBMlNeGeWa6D4/SoC05h01emmzIOBJQKBgQDkIuETOt8miteoSvmN\nXLVjyvWkqU9TZzhv3GzKvHN9B3DhjebL5H/PJzT8Sm8ATgrg9v+VY1k+vQCQFBgM\nFCPAgU1EHE/ErEmQNPnjEixnSpdNPldvx0x1sGYQ4KYtwSos/E4Xtj2o87kp+b1T\nyeLo8t7kV6fi/xqt28XmrdghkwKBgQDF9mjZYT+S6bDWw+G5YVw6lYOzIrOskxTK\nsI4IdoyyQ9GBN6IsPMxmCy5V79z+EVZLtRW5o5nuOANRjNCFBQQXv2svf7P7eXPl\n54/5mpan5YQKFgLUoT2osRMto6dbViH7E/80hoBjpU9J/RmL3i9IIXuN8ZhcTj2L\nBkU4Y3Pj6wKBgEXqnpobH8qbII62M5bsQ7cKu4+0R9hiuPwnTLwxVx+JSUIHECWK\nqNTeyjFLyosIX/MkH54z7WT53ZNKZThGb9KOjhSCrLu0pXLpmW/K4Qri5E3K/lcG\neFtVLWKcxrEdEwToajKAKpN95lCD9k8Yf08vJ7pJVu2NiyqfQR56RtO7AoGAKCvX\nnP0Z/IMFip9XR9oU8CJ1Bj3tfgCewH7RY7BC3s3aTsFuXFG+HJr6PSAelUQJYfWO\nQgyL6QZezgaoLcYVzYffhVUBve8ocKfr1HflSI7Pm4hZ7LIHpBrCzIkgJe21mZC2\nQf9lQFNEYrxEmdhtedKpkuVKyLhrzrFoDIhJ9R8CgYEAk/0ESAfUWaKmjGNHH62B\nqL5HWeZJtLGIJsbynrfObj8NXjbamc++iMQJfDNtVuu0azDJLZauH2imuCqoA5sx\n4v9n/BmtewJsH8kjhW2SOmvgn+9zFC8jvg+TBWBAUSk4mVI8geVh1m6ctUmX4wOW\nmFKPs87geoBiK/i8HJeuoWw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "mypandemic@nomadic-groove-282000.iam.gserviceaccount.com",
+  "client_id": "112977083581034625850",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mypandemic%40nomadic-groove-282000.iam.gserviceaccount.com"
+}
